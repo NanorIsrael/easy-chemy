@@ -69,3 +69,5 @@ getAllThings = session.query(Thing).all()
 print(getAllThings)
 # getOne = session.query(Person).filter(Person.firstname == 'Nicole')
 # print(getAll)
+
+session.close()
