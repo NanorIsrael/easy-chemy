@@ -44,8 +44,8 @@ class Person(Base):
 
 
 
-person = Person(1234, "Maurice", "Nicole", 24, 'M')
-thing = Thing(4321, "Maurice Nicole thing", 1234)
+person = Person(1238, "Mary", "Nicole", 29, 'F')
+thing = Thing(4391, "Mary Nicole thing", 1238)
 # print(person)
 
 engine = create_engine('postgresql://postgres:alchemy@localhost:5433/my_db', pool_pre_ping=True)
@@ -54,8 +54,8 @@ Base.metadata.create_all(bind=engine)
 Sesssion = sessionmaker(bind=engine)
 session = Sesssion()
 
-# session.add(person)
-# session.commit()
+print('z', session.add(person))
+print(session.commit())
 # session.add(thing)
 # session.commit()
 
