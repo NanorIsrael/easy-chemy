@@ -30,8 +30,8 @@ class City(Base):
         self.state_id = state_id
         self.state = state
 
-    def __repr__(self):
-        return f'{self.id}: {self.name}'
+    # def __repr__(self):
+    #     return {self.id: self.name}
 
 if __name__ == "__main__":
     # engine = create_engine(
@@ -83,8 +83,16 @@ if __name__ == "__main__":
 
     # states = session.query(State).join(City).order_by(State.id, City.id).all()
     states = session.query(State).order_by(State.id).all()
-    for state in states:
-        print(f'{state.id}: {state.name}')
-        for city in state.cities:
-            print(f'    {city.id}: {city.name}')
+    print('\n')
+    print(states)
+    print('\n')
+    results_obj = {}
+    for state_instance in states:
+        del state_instance.__dict__['_sa_instance_state']
+       
+        results_obj.update({state_instance.__class__.__name__ + '.' + str(state_instance.id): state_instance})
+    
+    print(results_obj)
+    #     for city in state.cities:
+    #         print(f'    {city.id}: {city.name}')
     
